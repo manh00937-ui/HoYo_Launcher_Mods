@@ -12,3 +12,4 @@ NẾU MÁY CÓ NHIỀU Ổ ĐĨA NÊN ĐỂ LAUNCHER VÀ GAME CHUNG 1 Ổ VÀ CH
 Sau khi quét sẽ có một mục cần set thủ công là datalauncher.json set thư mục này vô đâu cũng được [ nên để ở mục Data Mods của launcher] đây là thư mục lưu thiết lập setup để sau này nếu có cập nhật Launcher sẽ ko phải setting lại từ đầu
 BẢN LAUNCHER NÀY ĐÃ BAO GỒM CÁC FILE HỖ TRỢ ĐƠN GIẢN NHƯ Bản đồ nguyên liệu - chỉ điểm rương - Xóa sương mù - xóa uid ở mọi vị trí - xóa mặt đất.........
 CHƯA BAO GỒM NHÂN VẬT DO QUÁ NẶNG VÀ NHU CẦU MỖI NGƯỜI MỖI KHÁC [ NẾU CÓ NHU CẦU CÓ THỂ LIÊN HỆ AD CHO ]
+Vô link sever discod để báo lỗi - nhận thông tin cập nhập mới nhất và trao đổi mod game
