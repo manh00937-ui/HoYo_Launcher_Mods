@@ -13,3 +13,4 @@ Sau khi quét sẽ có một mục cần set thủ công là datalauncher.json s
 BẢN LAUNCHER NÀY ĐÃ BAO GỒM CÁC FILE HỖ TRỢ ĐƠN GIẢN NHƯ Bản đồ nguyên liệu - chỉ điểm rương - Xóa sương mù - xóa uid ở mọi vị trí - xóa mặt đất.........
 CHƯA BAO GỒM NHÂN VẬT DO QUÁ NẶNG VÀ NHU CẦU MỖI NGƯỜI MỖI KHÁC [ NẾU CÓ NHU CẦU CÓ THỂ LIÊN HỆ AD CHO ]
 Vô link sever discod để báo lỗi - nhận thông tin cập nhập mới nhất và trao đổi mod game
+https://discord.gg/ABkWm4BPp
