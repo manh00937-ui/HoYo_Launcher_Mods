@@ -1,9 +1,19 @@
 # HoYo Launcher Mods
-> Launcher quản lý mod **3DMigoto (GIMI)** cho Genshin Impact trên Windows — bật/tắt mod bằng một cú nhấp, sửa lỗi mod hàng loạt, macro, ReShade và nhiều hơn nữa. Giao diện tiếng Việt, thiết kế cho người mới.
+> Launcher quản lý mod **3DMigoto (GIMI)** cho Genshin Impact trên Windows — bật/tắt mod bằng một cú nhấp, sửa lỗi mod hàng loạt, macro, ReShade/StarLuxe, điểm danh HoYoLAB và nhiều hơn nữa. Giao diện tiếng Việt, thiết kế cho người mới.
 
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)
 ![.NET](https://img.shields.io/badge/.NET-8.0-purple)
-![Version](https://img.shields.io/badge/version-2.0.11-green)
+![Version](https://img.shields.io/badge/version-2.1.12-green)
+
+---
+
+## 📥 Tải về
+
+| Gói | Link |
+|---|---|
+| 🚀 Launcher (bản mới nhất) | [Releases — HoYo_Launcher_v2.1.12.zip](https://github.com/manh00937-ui/HoYo_Launcher_Mods/releases/latest) |
+| ⭐ Tài nguyên StarLuxe (ReShade preset pack, ~151 MB) | [StarLuxe.zip](https://github.com/manh00937-ui/HoYo_Launcher_Mods/releases/download/StarLuxe/StarLuxe.zip) — khuyến nghị: để launcher tự tải (mở tab **StarLuxe** → bấm tải) |
+| 🛠 Trình Update (tự cập nhật) | `Launcher Update.zip` ở root repo — launcher tự tải về và thay thế khi bạn bấm **Cập nhật trình Update** |
 
 ---
 
@@ -17,11 +27,14 @@ Ngoài launcher, gói còn kèm:
 
 | Thành phần | Công dụng |
 |---|---|
-| `HoYo Launcher Mods.bat` | Cách mở launcher nhanh nhất (double-click là chạy) |
-| `HoYo Launcher Update.exe` | Chương trình cập nhật launcher bằng file `.zip` (chạy được cả khi launcher hỏng/bị xoá) |
+| `HoYoLauncher.bat` | Cách mở launcher nhanh nhất (double-click là chạy) |
+| `HoYoLauncher.exe` | Launcher chính — nằm trong `System\Resources\bin\` |
+| `launcher Update.exe` | Trình cập nhật launcher (chạy được cả khi launcher hỏng/bị xoá) |
 | `3DMigoto/` | Loader 3DMigoto + thư mục `Mods` + shader cache (phần game đọc vào) |
-| `Data Mods/` | "Kho" dữ liệu: icon nhân vật/vũ khí, thư mục Effects, thư mục Plugins |
-| `HoYo Launcher Mods/` | **Mã nguồn** (Visual Studio 2022, solution `HoYoLauncherModsWinUI.sln`) |
+| `Data Mods/` | "Kho" dữ liệu: icon nhân vật/vũ khí, thư mục Effects, Plugins và database `datalauncher.json` |
+| `System/` | Mã nguồn launcher + trình cập nhật + plugin (dành cho dev/pack) |
+
+> ⭐ **Tài nguyên StarLuxe** (ReShade + bộ preset ~151 MB) **KHÔNG kèm sẵn trong gói** để giảm dung lượng — mở tab **StarLuxe** lần đầu là launcher tự tải về, cài vào `System\StarLuxe` rồi tự khởi động lại.
 
 ---
 
@@ -41,13 +54,38 @@ Ngoài launcher, gói còn kèm:
 - **Thêm Mod** nhận cả file nén (`.zip`, `.rar`, `.7z`, `.tar`, `.gz`…) lẫn thư mục đã giải nén — tự giải nén tạm bằng SharpCompress, **không cần cài 7-Zip/WinRAR**.
 - Mod chỉ có `ini` + texture (không có ảnh thumbnail) tự dùng icon nhân vật/vũ khí chứa nó.
 
-### 3. 🗂️ Tab Chưa phân loại
+### 3. ⭐ Tab StarLuxe (ReShade chạy cùng launcher)
+Tài nguyên StarLuxe = bộ uygulama riêng (`Starluxe.exe`) + kho preset ReShade (SPECTRA, Stella Mod, Alchemy, AstralAura…):
+
+- **Tự động tiêm ReShade vào game** khi bấm Bắt Đầu Game — injector canh sẵn đúng khoảnh khắc game xuất hiện (có công tắc tắt được, tắt giữa chừng vẫn dừng được).
+- **Áp preset đang chọn vào `ReShade.ini` của game** — giá trị gốc được lưu lại, tắt công tắc là phục hồi về như cũ.
+- Chọn preset từ catalogue (kèm nút **Tải mới nếu thiếu** cho từng preset), nút **🚀 Mở app StarLuxe** / **📁 Mở thư mục StarLuxe** khi cần thao tác tay.
+- **Thiếu tài nguyên?** Tab chỉ hiện 1 thẻ thông báo + 1 nút **Tải tài nguyên StarLuxe (từ GitHub)** — launcher tự tải `StarLuxe.zip` (~151 MB, thấy % tải ra ngoài), giải nén vào `System\StarLuxe`, **tự khởi động lại launcher** là dùng được ngay.
+- **🗑️ Gỡ tài nguyên StarLuxe** — chuyển cả thư mục vào **Thùng rác của launcher** (khôi phục được từ tab Thùng rác).
+- **Cập nhật launcher không xóa mất tài nguyên** của bạn (bản update luôn giữ lại `System\StarLuxe` nguyên vẹn; nếu bản zip mới lỡ kèm StarLuxe thì bản đang dùng của bạn vẫn được ưu tiên).
+
+### 4. 🌐 Tab Admin [Quản trị viên] — HoYoLAB cá nhân
+- **Đăng nhập HoYoLAB ngay trong launcher** (cửa sổ web riêng), thông tin tài khoản được tái sử dụng cho các tab khác.
+- Hồ sơ: UID, email, giới tính, level — tự làm mới theo chu kỳ.
+- **Điểm danh tự động hằng ngày** — có thẻ chu kỳ 16:00 và lịch sử điểm.
+- **Đổi mã quà tặng (redeem code)** — nhập code, nhận phần thưởng khi game đang cài bất kỳ server nào hỗ trợ.
+
+### 5. 📦 Tab Cơ sở dữ liệu (kho nguyên liệu + lịch farm)
+- Gộp dữ liệu HoYoLAB (inventory + túi đồ) với database nguyên liệu kiểu Paimon.moe: xem theo kiểu trang "lưới 9 cột" **nguyên liệu đang có / cần cho hôm nay**.
+- Lọc theo thứ trong tuần (hôm nay / từng ngày cụ thể) + ô tìm kiếm nhanh, góc nhìn theo vai trò (role) trên từng server.
+- Khu túi đồ HoYoLAB: bộ lọc sở hữu, ảnh nguyên liệu tự tải về cache.
+
+### 6. 🧮 Tab Công Cụ Dự Tính Bội Dương
+- Trang **HoYoLAB Calculator** (dự tính nguyên liệu cần cho Nhân vật / Vũ khí / Âm Trấn Ca / Thánh Di Vật) chạy **ngay trong launcher** bằng WebView2.
+- Mọi nút bấm / ô nhập / bộ lọc đều hoạt động thật, **tự đăng nhập bằng tài khoản** đã login ở tab Admin — chuyển ngôn ngữ Việt/Anh 1 nút.
+
+### 7. 🗂️ Tab Chưa phân loại
 Mod đã thêm vào launcher nhưng chưa gán cho nhân vật/vũ khí/hiệu ứng nào — cùng bộ thao tác như trên, dùng để chứa mod "linh tinh" trước khi phân loại.
 
-### 4. 🎨 Tab Thư Mục Mod (nhóm mod)
+### 8. 🎨 Tab Thư Mục Mod (nhóm mod)
 Tạo các **nhóm mod tô màu** tuỳ ý (theo bộ trang phục, theo tác giả…), gán nhiều mod bất kể thuộc nhân vật/vũ khí nào vào cùng một nhóm. Thẻ mod ở các tab khác hiện dải màu nhỏ theo nhóm — quản lý bộ mod theo "era"/theo mùa rất tiện.
 
-### 5. 🔧 Tab Fix Mods (sửa lỗi mod hàng loạt)
+### 9. 🔧 Tab Fix Mods (sửa lỗi mod hàng loạt)
 Nhiều mod texture-override thiếu/sai lệnh `run =` nên không hiện đúng với **ORFix / NNFix / GIMI** (dự án LeoTools). Launcher tự quét và sửa theo đúng chuẩn `ORFixGuide.md`:
 
 - Sắp lại thứ tự `NormalMap → Diffuse → LightMap` + đánh số lại slot `ps-t0/1/2`.
@@ -55,6 +93,7 @@ Nhiều mod texture-override thiếu/sai lệnh `run =` nên không hiện đún
 - Xử lý khối `Resource\GIMI\...` ở section Face → thêm `run = CommandList\GIMI\SetTextures`.
 - **Tự bỏ qua section "Face"** (theo khuyến cáo của guide — thêm ORFix dưới face texture sẽ gãy mod).
 - Hiểu mod gộp nhiều biến thể (hậu tố `.0`, `_1`, `6_2`…), khối có dòng overlay/viền, mod chia nhiều tầng `if/elif/else/endif`.
+- Khu vực **🩺 Tra Cứu & Đề Xuất**: chẩn đoán sâu từng mod — texture 0 byte, sai fourCC/DXT format, `drawindexed` vượt số index/vertex thật, mod trùng hash đang bật… với số liệu thật của từng mod, tự đề xuất bản sửa và làm luôn những gì sửa được.
 
 **2 cách dùng:**
 - **FIX ALL MODS** — quét toàn bộ (hoặc 1 nhân vật/vũ khí/hiệu ứng cụ thể), tự tải `ORFix.ini`/`ORFixAPI.ini` mới nhất từ GitHub (kiểm tra mỗi 24h), hỏi xác nhận, chạy thêm công cụ ngoài `57ReleaseVersion.exe`.
@@ -62,7 +101,7 @@ Nhiều mod texture-override thiếu/sai lệnh `run =` nên không hiện đún
 
 → Mọi lần sửa đều **tự sao lưu**, lưu vào "Lịch sử sửa lỗi" kèm nút **Hoàn tác**.
 
-### 6. ⌨️ Tab Macro (2 chế độ)
+### 10. ⌨️ Tab Macro (2 chế độ)
 
 **Macro Cơ Bản** — ghi/phát lại bàn phím:
 - Ghi đúng thứ tự bấm/nhả phím thật + khoảng nghỉ (hook `WH_KEYBOARD_LL` toàn hệ thống — ghi được cả khi Game đang focus).
@@ -80,15 +119,16 @@ Nhiều mod texture-override thiếu/sai lệnh `run =` nên không hiện đún
 - ⚠️ **Cảnh báo quyền Admin**: nếu Game chạy quyền cao hơn, Windows UIPI có thể chặn `SendInput` → banner gợi ý khởi động lại launcher bằng quyền Quản trị.
 - Không có UI sửa từng bước đã ghi (dữ liệu chuột quá lớn, sửa tay dễ hỏng thứ tự) — ghi sai thì xoá ghi lại.
 
-### 7. 🗑️ Tab Thùng rác
-Mod bị xoá **không mất ngay** — vào Thùng rác kèm mốc thời gian + mục sở hữu cũ, có thể khôi phục lại hoặc dọn vĩnh viễn.
+### 11. 🗑️ Tab Thùng rác
+Mod bị xoá **không mất ngay** — vào Thùng rác kèm mốc thời gian + vị trí cũ. Thùng rác dùng chung cho: **mod**, **macro/macro pro** và **tài nguyên StarLuxe**. Khôi phục được (về đúng chỗ cũ) hoặc dọn vĩnh viễn.
 
-### 8. ⚙️ Tab Cài đặt
+### 12. ⚙️ Tab Cài đặt
 - Khai báo/tự dò toàn bộ đường dẫn: `GenshinImpact.exe`, `3DMigoto Loader.exe`, thư mục `Mods`, thư mục dữ liệu launcher, thư mục Album.
 - **Đồng bộ `target =` trong `d3dx.ini`** theo đường dẫn game đã chọn.
-- Kiểm tra cấu hình còn hợp lệ hay không, bật/tắt **khởi chạy cùng Windows**, các tuỳ chọn giao diện.
+- Kiểm tra cấu hình còn hợp lệ hay không, bật/tắt **khởi chạy cùng Windows**, các tuỳ chọn giao diện (có cả mục Dev Settings cho dev).
+- **Cập nhật launcher**: mở trình Update và tự dò bản mới trên GitHub Releases; hoặc kéo-thả file `.zip` khi mạng chặn — trình Update **tự xác minh cấu trúc gói** (chặn đường dẫn nguy hiểm `..`), **tự backup**, rồi mới thay thế.
 
-### 9. 🧩 Hệ thống Plugin (thêm tab mới mà không sửa code lõi)
+### 13. 🧩 Hệ thống Plugin (thêm tab mới mà không sửa code lõi)
 
 | Plugin | Công dụng |
 |---|---|
@@ -96,15 +136,9 @@ Mod bị xoá **không mất ngay** — vào Thùng rác kèm mốc thời gian 
 | **Chạy chương trình sau khi vào game** | Gán nhiều chương trình (Discord, tool overlay, RPC…) tự chạy kèm ngay sau khi game khởi động thành công — mỗi chương trình đặt delay riêng, bật/tắt độc lập. |
 | **Thêm mod nhanh (kéo–thả file nén)** | Cửa sổ thả mod luôn mở: kéo `.zip/.rar/.7z/...` hoặc thư mục vào → chọn vị trí (nhân vật/vũ khí/hiệu ứng), chọn icon, đặt tên → thêm. Cửa sổ không tự đóng nên thêm liên tục nhiều mod mà không mở lại tab. |
 | **Gộp mod đang bật thành thư mục** | Tick chọn nhiều Nhân vật/Vũ khí/Hiệu ứng → tạo 1 thư mục mod gom toàn bộ mod đang bật của các mục đó vào tab "Thư Mục Mod" với 1 nút bấm. |
+| **🔓 Mở khoá FPS** | Vượt giới hạn 60 FPS của Genshin: chọn mốc 30–360 trong tab riêng, không sửa file game, không đổi thư mục game. |
 
-*(Có cả `SamplePlugin/` — ví dụ cách viết plugin riêng: Hello, GachaHistory, TabDemo…)*
-
-### 10. 🔄 Tích hợp hệ thống
-- **Khay hệ thống (tray)** + **phím tắt toàn cục** — thu nhỏ về khay vẫn chạy nền.
-- **Khởi động cùng Windows** (ghi Registry `HKCU\...\Run`, không cần Admin).
-- **Ghim cửa sổ luôn trên cùng khi game đang chạy** (dò tiến trình mỗi 2 giây).
-- **Phím F10**: tự gửi cho 3DMigoto sau mỗi lần bật/tắt/xoá mod để nạp lại mod **không cần restart game**.
-- **Cập nhật launcher**: nút trong Cài đặt → mở `HoYo Launcher Update.exe` → kéo-thả file `.zip` → xác minh (giải nén, kiểm tra có `HoYoLauncherModsWinUI.exe`, chặn đường dẫn nguy hiểm `..`) → tự thay thế (giữ backup `.bak_<thời gian>`).
+*(Có cả `SamplePlugin/` — ví dụ cách viết plugin riêng: Hello, GachaHistory, QuickImport, TabDemo…)*
 
 ---
 
@@ -121,12 +155,12 @@ Giải nén toàn bộ gói vào **một thư mục riêng**, ví dụ:
 C:\HoYo Launcher\
 ├── 3DMigoto\
 ├── Data Mods\
-├── HoYo Launcher Mods\
-├── HoYo Launcher Mods.bat
-└── HoYo Launcher Update.exe
+├── System\                        # launcher + trình cập nhật (bên trong)
+├── HoYoLauncher.bat
+└── launcher Update.exe
 ```
 
-⚠️ **Quy tắc quan trọng :** mọi đường dẫn phải nằm **trong cùng một thư mục gốc** với launcher (thư mục chứa `3DMigoto`, `Data Mods`, `HoYo Launcher Mods.bat`).
+⚠️ **Quy tắc quan trọng :** mọi đường dẫn phải nằm **trong cùng một thư mục gốc** với launcher (thư mục chứa `3DMigoto`, `Data Mods`, `HoYoLauncher.bat`).
 - ❌ Đặt `Data Mods` ở `C:\Data Mods` và launcher ở ổ khác → bị từ chối.
 - ❌ Đặt thư mục ở ngay **gốc ổ `C:\`** → bị từ chối.
 - ✅ Gom tất cả vào 1 thư mục gốc, ví dụ `C:\HoYo Launcher\...`
@@ -134,7 +168,7 @@ C:\HoYo Launcher\
 > Mẹo: nếu bạn copy gói ra chỗ khác rồi chạy, launcher **tự khởi tạo như người mới** — không đụng tới dữ liệu `datalauncher.json` của bản đang dùng hằng ngày.
 
 ### Bước 3 — Mở launcher
-Double-click **`HoYo Launcher Mods.bat`** (hoặc `HoYoLauncherModsWinUI.exe` trong `HoYo Launcher Mods\HoYo Launcher Mods\bin\x64\Debug\...`).
+Double-click **`HoYoLauncher.bat`** (hoặc chạy trực tiếp `System\Resources\bin\HoYoLauncher.exe`).
 
 ### Bước 4 — Thiết lập lần đầu
 Lần đầu mở, launcher chỉ hiện **1 trang thiết lập duy nhất**, bạn khai 3 đường dẫn:
@@ -161,19 +195,22 @@ Tab **Khởi chạy** → bấm **Chơi**. Muốn đổi mod giữa chừng → 
 ### Bước 8 — Mod lỗi (không hiện / vỡ texture)?
 Tab **Fix Mods** → **FIX ALL MODS** (hoặc chuột phải → **Sửa lỗi mod** trên từng thẻ) → xác nhận → chờ. Lỗi gì cũng bấm **Hoàn tác** trong Lịch sử sửa lỗi là về lại như cũ.
 
-### Bước 9 — (Tuỳ chọn) Macro & ReShade
+### Bước 9 — (Tuỳ chọn) StarLuxe, Macro, ReShade, HoYoLAB
+- **StarLuxe**: tab StarLuxe → nếu thấy thông báo thiếu tài nguyên, bấm **Tải tài nguyên StarLuxe** (~151 MB) và chờ launcher tự cài + tự restart; sau đó chọn preset và bật **tự động tiêm** — vào game là ReShade chạy theo.
 - **Macro**: tab Macro → tạo macro → ghi thao tác → đặt phím tắt. Bật **"Chỉ chạy trong Game"** để không gõ nhầm ra app khác.
-- **ReShade**: tab Plugin → bật **ReShade – chỉnh màu game** → vào game bấm **F8** để mở bảng chỉnh màu.
+- **ReShade (plugin)**: tab Plugin → bật **ReShade – chỉnh màu game** → vào game bấm **F8** để mở bảng chỉnh màu.
+- **HoYoLAB**: tab Admin [Quản trị viên] → đăng nhập 1 lần → điểm danh tự động + đổi code khi muốn.
 
 ---
 
 ## ❓ Xoá/ghi chú an toàn
 
-- **Không xoá thẳng mod**: mọi thao tác xoá đều đưa vào Thùng rác của launcher.
+- **Không xoá thẳng mod**: mọi thao tác xoá đều đưa vào Thùng rác của launcher (dùng chung cho mod / macro / tài nguyên StarLuxe).
 - **Mọi lần Sửa lỗi đều có bản sao lưu** tại `%LocalAppData%\HoYoLauncherModsWinUI\FixBackups\` (giữ tối đa 15 mục).
 - **Thùng rác mod**: `%LocalAppData%\HoYoLauncherModsWinUI\Trash\`
-- **Log crash**: `%LocalAppData%\HoYoLauncherModsWinUI\crash.log`
+- **Log crash**: `%LocalAppData%\HoYoLauncherModsWinUI\crash.log` · log StarLuxe: `Data Mods\starluxe-bridge.log`
 - **Cấu hình + database**: 1 file JSON (`datalauncher.json`) trong thư mục Data Mods.
+- **Cập nhật an toàn**: trình Update luôn backup bản cũ (`System.bak_<thời gian>`) trước khi thay, rollback nếu cài lỗi; tài nguyên `System\StarLuxe` của bạn luôn được giữ lại nguyên vẹn.
 
 ## 🛠️ Troubleshooting (hay gặp)
 
@@ -182,8 +219,10 @@ Tab **Fix Mods** → **FIX ALL MODS** (hoặc chuột phải → **Sửa lỗi m
 | Launcher không mở / báo lỗi đường dẫn | Kiểm tra mọi thứ nằm trong **1 thư mục gốc** và **không ở gốc ổ đĩa** (xem Bước 2) |
 | Bật mod nhưng trong game không thấy | Bấm **F10** trong game; kiểm tra tab Cài đặt → đường dẫn `Mods` đúng; chạy lại **FIX ALL MODS** |
 | Game không khởi động từ launcher | Kiểm tra đường dẫn `GenshinImpact.exe` + `3DMigoto Loader.exe` ở Cài đặt (nút kiểm tra cấu hình) |
-| Macro không gõ được vào game | Game chạy quyền cao hơn → chạy launcher bằng **quýền Quản trị** (banner trong tab Macro sẽ nhắc) |
-| Mod bị xoá nhầm | Tab **Thùng rác** → Khôi phục |
+| Bấm tải StarLuxe bị lỗi / % đứng | Kiểm tra mạng; mở lại tab StarLuxe bấm tải lại — file tạm nằm ở `<thư mục gói>\StarLuxe.download` (tự mất khi thành công, giữ lại khi lỗi cấu trúc để kiểm tra) |
+| Đã bật StarLuxe mà game không có ReShade | Kiểm tra công tắc **Tự động tiêm** vẫn bật; xem log `Data Mods\starluxe-bridge.log` |
+| Macro không gõ được vào game | Game chạy quyền cao hơn → chạy launcher bằng **quyền Quản trị** (banner trong tab Macro sẽ nhắc) |
+| Mod bị xoá nhầm / gỡ nhầm tài nguyên | Tab **Thùng rác** → Khôi phục |
 | Sửa lỗi mod làm mod hỏng | Tab Fix Mods → **Lịch sử sửa lỗi** → **Hoàn tác** |
 | Đổi thư mục Data Mods | Cài đặt → chọn thư mục mới → file `datalauncher.json` tự đi theo |
 
@@ -195,27 +234,32 @@ Tab **Fix Mods** → **FIX ALL MODS** (hoặc chuột phải → **Sửa lỗi m
 - **MVVM**: `CommunityToolkit.Mvvm` (`ObservableObject`, `[RelayCommand]`).
 - **DI**: `Microsoft.Extensions.DependencyInjection`, service đăng ký `AddSingleton` trong `App.xaml.cs`.
 - **Dữ liệu**: 1 file JSON duy nhất qua `DatabaseService` / `AppStateService` (phát sự kiện `DatabaseChanged` để UI tự làm mới).
-- **Cấu trúc**: `Views/` (XAML + code-behind) · `ViewModels/` · `Services/` (logic thuần C#) · `Models/` · `Behaviors/`, `Converters/` · `Assets/`.
-- **Build**: Visual Studio 2022 với workload *.NET Desktop Development* + *Windows App SDK C# Templates*, .NET 8 SDK → mở `HoYoLauncherModsWinUI.sln` → Restore NuGet → F5.
-- Plugin viết bằng .NET 8 thuần, giao tiếp qua `PluginContracts/ILauncherPlugin.cs` (`IPluginHost`, `IGameLaunchListener`, `IGamePreLaunchListener`).
+- **Cấu trúc**: `System\Resources\` — `Views/` (XAML + code-behind) · `ViewModels/` · `Services/` (logic thuần C#) · `Models/` · `Behaviors/`, `Converters/` · `Assets/`.
+- **Trình cập nhật**: `System\Update\` — project WPF **.NET Framework 4.8** chạy độc lập (mở được cả khi launcher hỏng), UI kéo–thả `.zip` + nút tự dò release GitHub.
+- **Plugin**: viết bằng .NET 8 thuần, giao tiếp qua `System\PluginContracts\ILauncherPlugin.cs` (`IPluginHost`, `IGameLaunchListener`, `IGamePreLaunchListener`).
+- **Build**: Visual Studio 2022 với workload *.NET Desktop Development* + *Windows App SDK C# Templates*, .NET 8 SDK → mở `System\HoYoLauncher.sln` → Restore NuGet → F5.
+- **Đóng gói phát hành**: zip bản mới phải có root `HoYoLauncher.bat` + `launcher Update.exe` + `3DMigoto/` + `Data Mods/` + `System/` (source + bin, đã strip comment), **KHÔNG kèm `System\StarLuxe`**; `launcher Update.exe` ở root và `System\Update` luôn là một cặp (thiếu là mất tính năng cập nhật).
 
 ## 📖 Thư mục mã nguồn
 
 ```
-HoYo Launcher Mods v2.0.11/
+HoYo Launcher v2.1.12/
 ├── 3DMigoto/                     # Loader + Mods + ShaderCache/ShaderFixes
 ├── Data Mods/                    # Database (icon Characters/Weapons, Effects, Plugins)
-├── HoYo Launcher Mods/           # NGUỒN NẰM Ở ĐÂY
-│   ├── HoYoLauncherModsWinUI.sln
-│   ├── ORFixGuide.md             # Chuẩn sửa lỗi mod mà Fix Mods tuân theo
-│   ├── CHANGELOG_*.md            # Lịch sử thay đổi chi tiết
+├── System/
+│   ├── HoYoLauncher.sln          # Solution (gồm Resources + Update)
+│   ├── Resources/                # NGUỒN LAUNCHER — WinUI 3 (Views/ViewModels/Services/Models)
+│   ├── Update/                   # NGUỒN TRÌNH CẬP NHẬT — WPF .NET Framework 4.8 (+ bin sẵn)
 │   ├── PluginContracts/          # Hợp đồng API cho plugin
-│   ├── Plugins/                  # 4 plugin chính (ReShade, PostLaunch, QuickImport, BulkFolder)
-│   ├── SamplePlugin/             # Ví dụ plugin để học cách viết plugin mới
-│   └── HoYo Launcher Mods/       # Project WinUI 3 (Views/ViewModels/Services/Models)
-├── HoYo Launcher Mods.bat        # Bấm đúp để mở launcher
-└── HoYo Launcher Update.exe      # Cập nhật launcher bằng file .zip
+│   ├── Plugins/                  # Plugin runtime đi kèm gói (5 bản)
+│   └── SamplePlugin/             # Ví dụ plugin để học cách viết plugin mới
+├── HoYoLauncher.bat              # Bấm đúp để mở launcher
+└── launcher Update.exe           # Cập nhật launcher (cả khi launcher hỏng)
 ```
+
+> Sau khi bạn lần đầu tải tài nguyên StarLuxe, thư mục `System\StarLuxe\` sẽ xuất hiện cạnh các thư mục trên — **nó không nằm trong gói tải về**.
+
+---
 
 ## ⚠️ Disclaimer
 
@@ -230,9 +274,9 @@ HoYo Launcher Mods v2.0.11/
 - [GIMI – GI Model Importer](https://github.com/SilentNightSound/GI-Model-Importer) (SilentNightSound) — chuẩn mod nhân vật
 - [ORFix / LeoTools](https://github.com/leotorrez/LeoTools) — fix `run =` cho ORFix/NNFix
 - ReShade (crosire) + gói XXMI ReShade Add-On (Caverabbit/SpectrumQT)
+- Tài nguyên StarLuxe do chủ dự án đóng gói riêng (app + kho preset của cộng đồng)
 - Các tác giả mod trong gói — credit nằm trong từng thư mục mod
 
 ## 📜 License
 
 Miễn trừ trách nhiệm — dùng trên rủi ro của bạn. Nếu bạn chia sẻ lại mã nguồn, vui lòng ghi credit.
-
