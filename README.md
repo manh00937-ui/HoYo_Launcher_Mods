@@ -11,7 +11,7 @@
 
 | Gói | Link |
 |---|---|
-| 🚀 Launcher (bản mới nhất) | [Releases — HoYo_Launcher_v2.1.12.zip](https://github.com/manh00937-ui/HoYo_Launcher_Mods/releases/latest) |
+| 🚀 Launcher (bản mới nhất) | [Releases](https://github.com/manh00937-ui/HoYo_Launcher_Mods/releases/latest) |
 | ⭐ Tài nguyên StarLuxe (ReShade preset pack, ~151 MB) | [StarLuxe.zip](https://github.com/manh00937-ui/HoYo_Launcher_Mods/releases/download/StarLuxe/StarLuxe.zip) — khuyến nghị: để launcher tự tải (mở tab **StarLuxe** → bấm tải) |
 | 🛠 Trình Update (tự cập nhật) | `Launcher Update.zip` ở root repo — launcher tự tải về và thay thế khi bạn bấm **Cập nhật trình Update** |
 
