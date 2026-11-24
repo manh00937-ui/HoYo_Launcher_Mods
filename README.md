@@ -109,7 +109,7 @@ Bên cạnh launcher, gói ứng dụng còn bao gồm:
 
 - ===============================================================================================================================
 
-- # HoYo Launcher Mods
+ # HoYo Launcher Mods
 > **3DMigoto (GIMI)** mod manager launcher for Genshin Impact on Windows — one-click mod toggling, batch mod fixing, pro macros, ReShade/StarLuxe, multi-account HoYoLAB daily check-in, and multi-style UI.
 
 ![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)
