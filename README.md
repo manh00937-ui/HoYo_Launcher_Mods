@@ -106,3 +106,114 @@ Bên cạnh launcher, gói ứng dụng còn bao gồm:
 ## ⚠️ Tuyên bố miễn trừ trách nhiệm
 - Dự án này là công cụ quản lý cá nhân mã nguồn mở, không liên kết trực tiếp với miHoYo hay HoYoverse.
 - Việc sử dụng mod có thể vi phạm Điều khoản Dịch vụ của trò chơi; người dùng tự chịu mọi rủi ro liên quan đến tài khoản cá nhân.
+
+- ===============================================================================================================================
+
+- # HoYo Launcher Mods
+> **3DMigoto (GIMI)** mod manager launcher for Genshin Impact on Windows — one-click mod toggling, batch mod fixing, pro macros, ReShade/StarLuxe, multi-account HoYoLAB daily check-in, and multi-style UI.
+
+![Platform](https://img.shields.io/badge/platform-Windows%2010%2F11-blue)
+![.NET](https://img.shields.io/badge/.NET-8.0-purple)
+![Version](https://img.shields.io/badge/version-2.2.01-green)
+
+---
+
+## 📥 Downloads
+
+| Package | Link |
+|---|---|
+| 🚀 Launcher (Latest Release) | [Releases](https://github.com/manh00937-ui/HoYo_Launcher_Mods/releases/latest) |
+| ⭐ StarLuxe Resources (ReShade preset pack, ~151 MB) | [StarLuxe.zip](https://github.com/manh00937-ui/HoYo_Launcher_Mods/releases/download/StarLuxe/StarLuxe.zip) — recommended: let the launcher auto-download it (open the **StarLuxe** tab → click Download) |
+| 🛠 Updater (Self-updating) | `Launcher Update.zip` in the repo root — automatically downloaded and replaced by the launcher when you click **Update Updater** |
+
+---
+
+## 📌 What is this?
+
+**HoYo Launcher Mods** is a Windows desktop application (WinUI 3 / .NET 8) designed to **manage 3DMigoto mods for Genshin Impact** automatically and intelligently without tedious manual file operations.
+
+Core principle: all mods are stored in a centralized repository, and **toggling mods on/off works by creating/deleting directory junctions (`mklink /J`)** — zero file copying, zero data moving, instant toggling, and no extra disk space consumed.
+
+Alongside the launcher, the application package includes:
+
+| Component | Purpose |
+|---|---|
+| `HoYoLauncher.bat` | Quick launch shortcut (automatically checks running processes and runs in the system tray) |
+| `HoYoLauncher.exe` | Main executable — located in `System\Resources\bin\` |
+| `launcher Update.exe` | Standalone updater (allows updating even if the main launcher encounters an issue) |
+| `3DMigoto/` | 3DMigoto loader + `Mods` folder + Shader cache |
+| `Data Mods/` | Central data repository: character/weapon icons, Effects folder, Plugins, and `datalauncher.json` database |
+| `System/` | Source code, resources, updater, and bundled plugins |
+
+> ⭐ **StarLuxe Resources** (ReShade + ~151 MB preset pack) are **not bundled by default** to keep the download size lightweight — open the **StarLuxe** tab for the first time, and the launcher will automatically download, install them into `System\StarLuxe`, and restart the app.
+
+---
+
+## ⚙️ Key Features
+
+### 1. 🎮 Launch Tab (Glass Frame UI & Dynamic Album)
+- **Large Play / Stop Game button** with real-time game process detection.
+- **Hero Album Slideshow** with automatic rotation and smooth transition effects (Fade, Push, Perspective).
+- **Pinned Characters** card (smooth-scrolling multi-column grid) and **Recently Used Mods** for quick toggling without switching tabs.
+- **Native Composition Blur** ensures cards stand out harmoniously without visual layering artifacts across any window aspect ratio.
+- **Intuitive drag-and-drop layout customization** and **Transparent Window mode** (hides the background image to see straight through to your desktop).
+
+### 2. 🧑‍🤝‍🧑 Characters / Weapons / Effects Tabs (Smart Mod Management)
+- Quick search by name, flexible sorting, pin-to-top, and custom avatar icons.
+- **Instant mod toggling** with a single click on any mod card.
+- **Batch Mod Import**: Intelligently detects archives (`.zip`, `.rar`, `.7z`, etc.) or folders, automatically scanning `.ini` files inside to identify and categorize mods under the matching character, minimizing manual setup.
+- Right-click context menu support to **Fix Mods** or **Restore Original Format**.
+
+### 3. ⭐ StarLuxe Tab (Integrated ReShade)
+- **Automatic ReShade injection** at the exact moment the game launches.
+- Preset library management (SPECTRA, Stella Mod, Alchemy, etc.), automatically applied to the game's `ReShade.ini`.
+- Resource status management UI: Auto-download from GitHub, remove directly to the launcher's Recycle Bin, and **smart protection** to prevent losing custom user resources during launcher updates.
+
+### 4. 🌐 Admin Tab — Multi-Account HoYoLAB
+- Manage **up to 5 HoYoLAB accounts** simultaneously with a quick-switch chip interface.
+- **Automatic silent daily check-in** for all linked accounts.
+- Real-time resource tracking (Original Resin, Realm Currency) updated every 10 minutes with near-cap notifications.
+- Redeem gift codes directly within the launcher.
+
+### 5. 📦 Database Tab & 🧮 Ascension Calculator
+- Look up daily farming materials, synced directly with your HoYoLAB inventory and styled after Paimon.moe.
+- Embedded **HoYoLAB Calculator** via WebView2 for accurate character and weapon upgrade material calculations.
+
+### 6. 🔧 Fix Mods Tab (Configuration Diagnostics & Repair)
+- Automatically scans `.ini` files missing `run =` commands for **ORFix / NNFix / GIMI**.
+- **Lookup & Suggestions**: Deep diagnostics for common issues such as missing `.dds` files, 0-byte files, DXGI/fourCC format mismatches, or `drawindexed` buffer overflow conflicts.
+- Every repair operation creates a `.bak` backup and supports safe **Undo**.
+
+### 7. ⌨️ Macro Tab (Basic Macro & Macro Pro)
+- **Basic Macro**: Record/playback keystroke sequences with natural randomized delays and an "In-Game Only" filter condition.
+- **Macro Pro**: Captures both keyboard inputs and raw mouse movements via Windows Raw Input for accurate reproduction of complex combos.
+- **Panic Key**: Press `Ctrl + Alt + Shift + F12` or `Pause` to immediately terminate all running macros and release any stuck keys/mouse buttons.
+
+### 8. 🎨 Appearance & Multi-Language (3 UI Styles)
+- **Multi-language support**: Full support for 5 languages (Tiếng Việt, English, 简体中文, 日本語, 한국어).
+- **Three flexible UI styles**:
+  - **Classic**: Familiar traditional interface.
+  - **Modern**: Compact navigation bar with customizable accent colors.
+  - **Liquid Glass**: Sleek, modern HTML-based interface rendered smoothly via WebView2.
+
+---
+
+## 🚀 Quick Start Guide
+
+1. **Extract:** Extract the entire archive into a dedicated folder (e.g., `C:\HoYo Launcher\`). Ensure all files remain inside a single parent directory and are not placed directly in the root of a drive (`C:\`).
+2. **Launch:** Double-click **`HoYoLauncher.bat`** to open the app (Administrator privileges are required on the first run).
+3. **Setup:** Complete the initial onboarding wizard to link your game directory, 3DMigoto directory, and Data Mods directory.
+4. **Play:** Add mods to their respective tabs, enable them with one click, and hit **Play** to jump in.
+
+---
+
+## 🛠️ Development & Building
+
+- **Core Stack:** WinUI 3, .NET 8, WPF (Updater), WebView2.
+- **Solution Structure:** Open `System\HoYoLauncher.sln` in Visual Studio 2022 to develop or compile from source.
+
+---
+
+## ⚠️ Disclaimer
+- This project is an open-source personal management tool and is not affiliated with miHoYo or HoYoverse.
+- Using mods may violate the game's Terms of Service; users assume all risks regarding their personal accounts.
